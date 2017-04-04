@@ -10,11 +10,12 @@ import connector01917.Connector;
 
 public class Main {
 	public static void main(String[] args) {
-		try { new Connector(); } 
-		catch (InstantiationException e) { e.printStackTrace(); }
-		catch (IllegalAccessException e) { e.printStackTrace(); }
-		catch (ClassNotFoundException e) { e.printStackTrace(); }
-		catch (SQLException e) { e.printStackTrace(); }
+		try {
+			Connector.connectToDatabase();
+		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 		System.out.println("Operatoer nummer 13:");
 		MySQLOperatoerDAO opr = new MySQLOperatoerDAO();
