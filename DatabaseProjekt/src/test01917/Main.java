@@ -17,9 +17,9 @@ public class Main {
 			e1.printStackTrace();
 		}
 		
-		System.out.println("Operatoer nummer 13:");
+		System.out.println("Operatoer nummer 1:");
 		MySQLOperatoerDAO opr = new MySQLOperatoerDAO();
-		try { System.out.println(opr.getOperatoer(13)); }
+		try { System.out.println(opr.getOperatoer(1)); }
 		catch (DALException e) { System.out.println(e.getMessage()); }
 		
 		System.out.println("Indsaettelse af ny operatoer med opr_id =  34");
@@ -44,8 +44,8 @@ public class Main {
 		try { System.out.println(opr.getOperatoerList()); }
 		catch (DALException e) { System.out.println(e.getMessage()); }
 		
-		System.out.println("Operatoer nummer 5:");
-		try { System.out.println(opr.getOperatoer(5)); }
+		System.out.println("Operatoer nummer 3:");
+		try { System.out.println(opr.getOperatoer(3)); }
 		catch (DALException e) { System.out.println(e.getMessage()); }		
 		
 	}
