@@ -19,7 +19,7 @@ public class MySQLProduktBatchKompDAO implements ProduktBatchKompDAO {
 		ResultSet rs = Connector.doQuery("SELECT * FROM produktbatchKomp WHERE pb_id = " + pbId+" and rb_id = "+rbId);
 		try {
 			if (!rs.first())
-				throw new DALException("Produktbatch med id: " + pbId + " findes ikke");
+				throw new DALException("ProduktbatchKomp med Produkt id: " + pbId + " og Raavare id: "+rbId+" findes ikke");
 			return new ProduktBatchKompDTO(rs.getInt("pb_id"), rs.getInt("rb_id"), rs.getDouble("tara"), rs.getDouble("netto"), rs.getInt("opr_id"));
 		} catch (SQLException e) {
 			throw new DALException(e);
