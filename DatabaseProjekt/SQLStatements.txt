@@ -1,1 +1,1 @@
-1=SELECT * FROM allOperatoere
+select.opr.with.id = SELECT * FROM operatoer WHERE opr_id = {0}
