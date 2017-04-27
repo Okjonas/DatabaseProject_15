@@ -1,1 +1,3 @@
 select.opr.with.id = SELECT * FROM operatoer WHERE opr_id = {0}
+insert.into.opr.with[0] = INSERT INTO operatoer(opr_id, opr_navn, ini, cpr, password)
+insert.into.opr.with[1] = VALUES ({0},'{1}','{2}','{3}', '{4}')
