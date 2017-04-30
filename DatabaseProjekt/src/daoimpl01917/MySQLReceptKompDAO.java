@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import connector01917.Connector;
+import connector01917.SQLMapper;
 import daointerfaces01917.DALException;
 import daointerfaces01917.ReceptKompDAO;
 import dto01917.ReceptKompDTO;
@@ -14,7 +15,7 @@ public class MySQLReceptKompDAO implements ReceptKompDAO{
 
 	@Override
 	public ReceptKompDTO getReceptKomp(int receptId, int raavareId) throws DALException {
-		ResultSet rs = Connector.doQuery("SELECT * FROM receptkomponent WHERE recept_id = " + receptId+" and raavare_id = "+raavareId);
+		ResultSet rs = Connector.doQuery(SQLMapper.getSQL("getReceptKomp", String.valueOf(receptId),String.valueOf(raavareId)));
 		try {
 			if (!rs.first())
 				throw new DALException("Receptkomponent med recept_id: " + receptId + " og raavare_id: "+raavareId+" findes ikke");
@@ -27,7 +28,7 @@ public class MySQLReceptKompDAO implements ReceptKompDAO{
 	@Override
 	public List<ReceptKompDTO> getReceptKompList(int receptId) throws DALException {
 		List<ReceptKompDTO> list = new ArrayList<ReceptKompDTO>();
-		ResultSet rs = Connector.doQuery("SELECT * FROM receptkomponent WHERE recept_id = " + receptId);
+		ResultSet rs = Connector.doQuery(SQLMapper.getSQL("getReceptKompList", String.valueOf(receptId)));
 		try
 		{
 			while (rs.next()) 
@@ -42,7 +43,7 @@ public class MySQLReceptKompDAO implements ReceptKompDAO{
 	@Override
 	public List<ReceptKompDTO> getReceptKompList() throws DALException {
 		List<ReceptKompDTO> list = new ArrayList<ReceptKompDTO>();
-		ResultSet rs = Connector.doQuery("SELECT * FROM receptkomponent");
+		ResultSet rs = Connector.doQuery(SQLMapper.getSQL("select.all.from", "receptkomponent"));
 		try
 		{
 			while (rs.next()) 
@@ -56,13 +57,13 @@ public class MySQLReceptKompDAO implements ReceptKompDAO{
 
 	@Override
 	public void createReceptKomp(ReceptKompDTO receptkomponent) throws DALException {
-		Connector.doUpdate("INSERT INTO receptkomponent VALUES ("+receptkomponent.getReceptId()+","+receptkomponent.getRaavareId()+
-				","+receptkomponent.getNomNetto()+","+receptkomponent.getTolerance()+")");
+		Connector.doUpdate(SQLMapper.getSQL("createReceptKomp", receptkomponent.toArray()));
+				
 	}
 
 	@Override
 	public void updateReceptKomp(ReceptKompDTO receptkomponent) throws DALException {
-		Connector.doUpdate("UPDATE receptkomponent set nom_netto ="+receptkomponent.getNomNetto()+", tolerance="+receptkomponent.getTolerance()+" WHERE recept_id="+receptkomponent.getReceptId()+" and raavare_id="+receptkomponent.getRaavareId());
+		Connector.doUpdate(SQLMapper.getSQL("updateReceptKomp", receptkomponent.toArray()));
 	}
 	
 }

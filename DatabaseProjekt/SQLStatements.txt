@@ -22,3 +22,7 @@ getRaavareBatch = SELECT * FROM raavarebatch WHERE rb_id = {0}
 getRaavareBatchList = SELECT * FROM raavarebatch where raavare_id = {0}
 createRaavareBatch = INSERT INTO raavarebatch(rb_id,raavare_id,maengde) VALUES ({0},{1},{2})
 updateRaavareBatch = UPDATE raavarebatch SET  maengde = {2} WHERE rb_id = {0} and  raavare_id = {1}
+getReceptKomp = SELECT * FROM receptkomponent WHERE recept_id = {0} and raavare_id = {1}
+getReceptKompList = SELECT * FROM receptkomponent WHERE recept_id = {0}
+createReceptKomp = INSERT INTO receptkomponent VALUES ({0},{1},{2},{3})
+updateReceptKomp = UPDATE receptkomponent set nom_netto ={2}, tolerance={3} WHERE recept_id={0} and raavare_id={1}
