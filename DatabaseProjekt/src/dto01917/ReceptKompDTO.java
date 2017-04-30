@@ -26,4 +26,9 @@ public class ReceptKompDTO
 	public String toString() { 
 		return receptId + "\t" + raavareId + "\t" + nomNetto + "\t" + tolerance; 
 	}
+	
+	public String[] toArray(){
+		String[] res = {String.valueOf(receptId),String.valueOf(raavareId),String.valueOf(nomNetto),String.valueOf(tolerance)};
+		return res;
+	}
 }

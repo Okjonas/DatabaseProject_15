@@ -27,5 +27,9 @@ public class RoleDTO{
 	public int getRoleId() {
 		return roleId;
 	}
+	public String[] toArray(){
+		String[] res = {String.valueOf(roleId),roleName};
+		return res;
+	}
 
 }

@@ -29,4 +29,8 @@ public class ReceptDTO
 	public String toString() { 
 		return receptId + "\t" + receptNavn; 
 	}
+	public String[] toArray(){
+		String[] res = {String.valueOf(receptId),receptNavn};
+		return res;
+	}
 }
