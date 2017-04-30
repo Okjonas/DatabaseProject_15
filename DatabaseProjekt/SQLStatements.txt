@@ -7,3 +7,5 @@ createRole=INSERT INTO roles(role_id,role) VALUES ({0},{1})
 updateRole=UPDATE roles SET role={1} WHERE role_id ={0}
 deleteRole=DELETE FROM roles WHERE role_id ={0}
 allUsers=SELECT * FROM allUsers order by user_id
+createProdBatchKomp = call createProdBatchKomp({0},{1},{2},{3},{4})
+updateProdBatchKomp = call updateProdBatchKomp({0},{1},{2},{3},{4})

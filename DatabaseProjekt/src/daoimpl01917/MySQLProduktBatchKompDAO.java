@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import connector01917.Connector;
+import connector01917.SQLMapper;
 import daointerfaces01917.DALException;
 import daointerfaces01917.ProduktBatchKompDAO;
 
@@ -59,13 +60,15 @@ public class MySQLProduktBatchKompDAO implements ProduktBatchKompDAO {
 
 	@Override
 	public void createProduktBatchKomp(ProduktBatchKompDTO produktbatchkomponent) throws DALException {
-		Connector.doQuery("call createProdBatchKomp("+produktbatchkomponent.getPbId()+","+produktbatchkomponent.getRbId()+","+produktbatchkomponent.getTara()+","+produktbatchkomponent.getNetto()+","+produktbatchkomponent.getOprId()+")");
+		Connector.doQuery(SQLMapper.getSQL("createProdBatchKomp", produktbatchkomponent.toArray()));
+		
 
 	}
 
 	@Override
 	public void updateProduktBatchKomp(ProduktBatchKompDTO produktbatchkomponent) throws DALException {
-		Connector.doQuery("call updateProdBatchKomp("+produktbatchkomponent.getPbId()+","+produktbatchkomponent.getRbId()+","+produktbatchkomponent.getTara()+","+produktbatchkomponent.getNetto()+","+produktbatchkomponent.getOprId()+")");
+		Connector.doQuery(SQLMapper.getSQL("updateProdBatchKomp", produktbatchkomponent.toArray()));
+		
 
 	}
 
