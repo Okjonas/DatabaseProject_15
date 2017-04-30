@@ -9,3 +9,5 @@ allOperatoere=SELECT * FROM allOperatoere order by opr_id
 deleteOperatoer=DELETE from operatoer WHERE opr_id={0}
 createOperatoer=call createOperatoer({0},''{1}'',''{2}'',''{3}'',''{4}'',''{5}'')
 addRole=call addRole({0},{1})
+createProdBatchKomp = call createProdBatchKomp({0},{1},{2},{3},{4})
+updateProdBatchKomp = call updateProdBatchKomp({0},{1},{2},{3},{4})

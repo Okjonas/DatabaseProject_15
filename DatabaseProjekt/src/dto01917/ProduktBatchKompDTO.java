@@ -31,4 +31,8 @@ public class ProduktBatchKompDTO
 	public String toString() { 
 		return pbId + "\t" + rbId +"\t" + tara +"\t" + netto + "\t" + oprId ; 
 	}
+	public String[] toArray(){
+		String[] res = {String.valueOf(pbId),String.valueOf(rbId),String.valueOf(tara),String.valueOf(netto),String.valueOf(oprId)};
+		return res;
+	}
 }
