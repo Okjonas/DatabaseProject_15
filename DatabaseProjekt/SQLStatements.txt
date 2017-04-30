@@ -12,12 +12,12 @@ addRole=call addRole({0},{1})
 createProdBatchKomp = call createProdBatchKomp({0},{1},{2},{3},{4})
 updateProdBatchKomp = call updateProdBatchKomp({0},{1},{2},{3},{4})
 select.all.from = SELECT * FROM {0}
-getProduktBatchKompList = SELECT * FROM produktbatchKomp WHERE pb_id = {0}
-getProduktBatchKomp = SELECT * FROM produktbatchKomp WHERE pb_id = {0} and rb_id = {1}
+getProduktBatchKompList = SELECT * FROM produktbatchkomponent WHERE pb_id = {0}
+getProduktBatchKomp = SELECT * FROM produktbatchkomponent WHERE pb_id = {0} and rb_id = {1}
 getOperatoer = SELECT * FROM allOperatoere WHERE opr_id = {0}
 getProduktBatch = SELECT * FROM produktbatch WHERE pb_id = {0}
 createProduktBatch = INSERT INTO produktbatch(pb_id,status,recept_id) VALUES ({0},{1},{2})
-updateProdBatch = UPDATE produktbatch SET  status = {0}, recept_id = {1} WHERE pb_id = {2}
+updateProdBatch = UPDATE produktbatch SET  status = {1}, recept_id = {2} WHERE pb_id = {0}
 getRaavareBatch = SELECT * FROM raavarebatch WHERE rb_id = {0}
 getRaavareBatchList = SELECT * FROM raavarebatch where raavare_id = {0}
 createRaavareBatch = INSERT INTO raavarebatch(rb_id,raavare_id,maengde) VALUES ({0},{1},{2})
@@ -26,3 +26,9 @@ getReceptKomp = SELECT * FROM receptkomponent WHERE recept_id = {0} and raavare_
 getReceptKompList = SELECT * FROM receptkomponent WHERE recept_id = {0}
 createReceptKomp = INSERT INTO receptkomponent VALUES ({0},{1},{2},{3})
 updateReceptKomp = UPDATE receptkomponent set nom_netto ={2}, tolerance={3} WHERE recept_id={0} and raavare_id={1}
+getRaavare=SELECT * FROM raavare WHERE raavare_id = {0}
+createRaavare=INSERT INTO raavare VALUES({0},''{1}'',''{2}'')
+updateRaavare=UPDATE raavare SET  raavare_navn =''{1}'', leverandoer=''{2}'' WHERE raavare_id = {0}
+getRecept=SELECT * FROM recept WHERE recept_id ={0}
+createRecept=INSERT INTO recept(recept_id, recept_navn) VALUES ({0},''{1}'')
+updateRecept=UPDATE recept SET  recept_navn = ''{1}'' WHERE recept_id={0} 

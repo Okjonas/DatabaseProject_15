@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import connector01917.Connector;
+import connector01917.SQLMapper;
 import daointerfaces01917.DALException;
 import daointerfaces01917.RaavareDAO;
 import dto01917.RaavareDTO;
@@ -14,7 +15,7 @@ public class MySQLRaavareDAO implements RaavareDAO {
 
 	@Override
 	public RaavareDTO getRaavare(int raavareId) throws DALException {
-		ResultSet rs = Connector.doQuery("SELECT * FROM raavare WHERE raavare_id = " + raavareId);
+		ResultSet rs = Connector.doQuery(SQLMapper.getSQL("getRaavare", String.valueOf(raavareId)));
 	    try {
 	    	if (!rs.first()) throw new DALException("Raavare med id: " + raavareId + " findes ikke");
 	    	return new RaavareDTO (rs.getInt("raavare_id"),rs.getString("raavare_navn"), rs.getString("leverandoer"));
@@ -26,7 +27,7 @@ public class MySQLRaavareDAO implements RaavareDAO {
 	@Override
 	public List<RaavareDTO> getRaavareList() throws DALException {
 		List<RaavareDTO> list = new ArrayList<RaavareDTO>();
-		ResultSet rs = Connector.doQuery("SELECT * FROM raavare");
+		ResultSet rs = Connector.doQuery(SQLMapper.getSQL("select.all.from", "raavare"));
 		try
 		{
 			while (rs.next()) 
@@ -40,21 +41,14 @@ public class MySQLRaavareDAO implements RaavareDAO {
 
 	@Override
 	public void createRaavare(RaavareDTO raavare) throws DALException {
-		Connector.doUpdate(
-				"INSERT INTO raavare VALUES " +
-				"(" + raavare.getRaavareId() + ", '" + raavare.getRaavareNavn() + "', '" + raavare.getLeverandoer() + "')"
-			);
+		Connector.doUpdate(SQLMapper.getSQL("createRaavare", raavare.toArray()));
 	}
 		
 	
 
 	@Override
 	public void updateRaavare(RaavareDTO raavare) throws DALException {
-		Connector.doUpdate(
-				"UPDATE raavare SET  raavare_navn = '" + raavare.getRaavareNavn() + "', leverandoer =  '" + raavare.getLeverandoer()
-				+ "' WHERE raavare_id = " +
-				raavare.getRaavareId()
-		);
+		Connector.doUpdate(SQLMapper.getSQL("updateRaavare", raavare.toArray()));
 		
 	}
 
