@@ -27,7 +27,7 @@ public class MySQLRaavareBatchDAO implements RaavareBatchDAO {
 	@Override
 	public List<RaavareBatchDTO> getRaavareBatchList() throws DALException {
 		List<RaavareBatchDTO> list = new ArrayList<RaavareBatchDTO>();
-		ResultSet rs = Connector.doQuery("SELECT * FROM raavareBatch");
+		ResultSet rs = Connector.doQuery("SELECT * FROM raavarebatch");
 		try {
 			while (rs.next()) {
 				list.add(new RaavareBatchDTO(rs.getInt("rb_id"), rs.getInt("raavare_id"), rs.getInt("maengde")));
@@ -41,7 +41,7 @@ public class MySQLRaavareBatchDAO implements RaavareBatchDAO {
 	@Override
 	public List<RaavareBatchDTO> getRaavareBatchList(int raavareId) throws DALException {
 		List<RaavareBatchDTO> list = new ArrayList<RaavareBatchDTO>();
-		ResultSet rs = Connector.doQuery("SELECT * FROM raavareBatch where raavare_id = " + raavareId);
+		ResultSet rs = Connector.doQuery("SELECT * FROM raavarebatch where raavare_id = " + raavareId);
 		try {
 			while (rs.next()) {
 				list.add(new RaavareBatchDTO(rs.getInt("rb_id"), rs.getInt("raavare_id"), rs.getInt("maengde")));

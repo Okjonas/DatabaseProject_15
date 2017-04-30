@@ -27,7 +27,7 @@ public class MySQLReceptKompDAO implements ReceptKompDAO{
 	@Override
 	public List<ReceptKompDTO> getReceptKompList(int receptId) throws DALException {
 		List<ReceptKompDTO> list = new ArrayList<ReceptKompDTO>();
-		ResultSet rs = Connector.doQuery("SELECT * FROM receptkomponent WHERE pb_id = " + receptId);
+		ResultSet rs = Connector.doQuery("SELECT * FROM receptkomponent WHERE recept_id = " + receptId);
 		try
 		{
 			while (rs.next()) 

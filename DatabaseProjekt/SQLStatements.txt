@@ -2,8 +2,8 @@ select.opr.with.id = SELECT * FROM operatoer WHERE opr_id = {0}
 updateOperatoer = call updateOperatoer ({0},''{1}'',''{2}'',''{3}'', ''{4}'',{5})
 getRole=SELECT * FROM roles WHERE role_id= {0}
 allRoles=SELECT * FROM roles
-createRole=INSERT INTO roles(role_id,role) VALUES ({0},{1})
-updateRole=UPDATE roles SET role={1} WHERE role_id ={0}
+createRole=INSERT INTO roles(role_id,role) VALUES ({0},''{1}'')
+updateRole=UPDATE roles SET role=''{1}'' WHERE role_id ={0}
 deleteRole=DELETE FROM roles WHERE role_id ={0}
 allOperatoere=SELECT * FROM allOperatoere order by opr_id
 deleteOperatoer=DELETE from operatoer WHERE opr_id={0}
