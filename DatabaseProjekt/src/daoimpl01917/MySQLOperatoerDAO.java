@@ -21,7 +21,7 @@ public class MySQLOperatoerDAO implements OperatoerDAO {
 		int id;
 		String name, ini, cpr, password;
 		List<RoleDTO> roles=new ArrayList<RoleDTO>();
-		ResultSet rs = Connector.doQuery("SELECT * FROM allOperatoere WHERE opr_id = " + oprId);
+		ResultSet rs = Connector.doQuery(SQLMapper.getSQL("getOperatoer", String.valueOf(oprId)));
 	    try {
 	    	if (!rs.first()) throw new DALException("Operatoeren " + oprId + " findes ikke");
 //	    	return new OperatoerDTO (rs.getInt("opr_id"), rs.getString("opr_navn"), rs.getString("ini"), rs.getString("cpr"), rs.getString("password"));
