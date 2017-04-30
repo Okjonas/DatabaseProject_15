@@ -15,3 +15,6 @@ select.all.from = SELECT * FROM {0}
 getProduktBatchKompList = SELECT * FROM produktbatchKomp WHERE pb_id = {0}
 getProduktBatchKomp = SELECT * FROM produktbatchKomp WHERE pb_id = {0} and rb_id = {1}
 getOperatoer = SELECT * FROM allOperatoere WHERE opr_id = {0}
+getProduktBatch = SELECT * FROM produktbatch WHERE pb_id = {0}
+createProduktBatch = INSERT INTO produktbatch(pb_id,status,recept_id) VALUES ({0},{1},{2})
+updateProdBatch = UPDATE produktbatch SET  status = {0}, recept_id = {1} WHERE pb_id = {2}
