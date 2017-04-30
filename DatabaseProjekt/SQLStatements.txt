@@ -21,3 +21,6 @@ updateProdBatch = UPDATE produktbatch SET  status = {1}, recept_id = {2} WHERE p
 getRaavare=SELECT * FROM raavare WHERE raavare_id = {0}
 createRaavare=INSERT INTO raavare VALUES({0},''{1}'',''{2}'')
 updateRaavare=UPDATE raavare SET  raavare_navn =''{1}'', leverandoer=''{2}'' WHERE raavare_id = {0}
+getRecept=SELECT * FROM recept WHERE recept_id ={0}
+createRecept=INSERT INTO recept(recept_id, recept_navn) VALUES ({0},''{1}'')
+updateRecept=UPDATE recept SET  recept_navn = ''{1}'' WHERE recept_id={0} 
