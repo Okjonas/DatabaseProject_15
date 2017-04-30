@@ -18,3 +18,7 @@ getOperatoer = SELECT * FROM allOperatoere WHERE opr_id = {0}
 getProduktBatch = SELECT * FROM produktbatch WHERE pb_id = {0}
 createProduktBatch = INSERT INTO produktbatch(pb_id,status,recept_id) VALUES ({0},{1},{2})
 updateProdBatch = UPDATE produktbatch SET  status = {0}, recept_id = {1} WHERE pb_id = {2}
+getRaavareBatch = SELECT * FROM raavarebatch WHERE rb_id = {0}
+getRaavareBatchList = SELECT * FROM raavarebatch where raavare_id = {0}
+createRaavareBatch = INSERT INTO raavarebatch(rb_id,raavare_id,maengde) VALUES ({0},{1},{2})
+updateRaavareBatch = UPDATE raavarebatch SET  maengde = {2} WHERE rb_id = {0} and  raavare_id = {1}
