@@ -18,11 +18,8 @@ public class MySQLProduktBatchKompDAO implements ProduktBatchKompDAO {
 	@Override
 	public ProduktBatchKompDTO getProduktBatchKomp(int pbId, int rbId) throws DALException {
 
-<<<<<<< HEAD
 		ResultSet rs = Connector.doQuery(SQLMapper.getSQL("getProduktBatchKomp", String.valueOf(pbId),String.valueOf(rbId)));
-=======
-		ResultSet rs = Connector.doQuery("SELECT * FROM produktbatchkomponent WHERE pb_id = " + pbId+" and rb_id = "+rbId);
->>>>>>> branch 'master' of https://github.com/Okjonas/DatabaseProject_15.git
+
 		try {
 			if (!rs.first())
 				throw new DALException("ProduktbatchKomp med Produkt id: " + pbId + " og Raavare id: "+rbId+" findes ikke");
@@ -35,11 +32,8 @@ public class MySQLProduktBatchKompDAO implements ProduktBatchKompDAO {
 	@Override
 	public List<ProduktBatchKompDTO> getProduktBatchKompList(int pbId) throws DALException {
 		List<ProduktBatchKompDTO> list = new ArrayList<ProduktBatchKompDTO>();
-<<<<<<< HEAD
 		ResultSet rs = Connector.doQuery(SQLMapper.getSQL("getProduktBatchKompList", String.valueOf(pbId)));
-=======
-		ResultSet rs = Connector.doQuery("SELECT * FROM produktbatchkomponent WHERE pb_id = " + pbId);
->>>>>>> branch 'master' of https://github.com/Okjonas/DatabaseProject_15.git
+
 		try
 		{
 			while (rs.next()) 
@@ -54,11 +48,9 @@ public class MySQLProduktBatchKompDAO implements ProduktBatchKompDAO {
 	@Override
 	public List<ProduktBatchKompDTO> getProduktBatchKompList() throws DALException {
 		List<ProduktBatchKompDTO> list = new ArrayList<ProduktBatchKompDTO>();
-<<<<<<< HEAD
+
 		ResultSet rs = Connector.doQuery(SQLMapper.getSQL("select.all.from", "produktbatchkomponent"));
-=======
-		ResultSet rs = Connector.doQuery("SELECT * FROM produktbatchkomponent");
->>>>>>> branch 'master' of https://github.com/Okjonas/DatabaseProject_15.git
+
 		try
 		{
 			while (rs.next()) 
