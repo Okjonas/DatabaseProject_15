@@ -21,7 +21,7 @@ public class SQLMapper {
 		}
 	}
 
-	public static String getSQL(String SQL_Query, String[] array_list) {
+	public static String getSQL(String SQL_Query, String... array_list) {
 
 		String query = MessageFormat.format(SQLMapper.getStatement(SQL_Query), array_list);
 

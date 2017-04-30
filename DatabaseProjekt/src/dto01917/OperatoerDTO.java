@@ -59,4 +59,8 @@ public class OperatoerDTO
 	public void addRole(RoleDTO role) {
 		roles.add(role);
 	}
+	public String[] toArray(){
+		String[] res = {String.valueOf(oprId),oprNavn,ini,cpr,password,String.valueOf(roles.get(0).getRoleId())};
+		return res;
+	}
 }

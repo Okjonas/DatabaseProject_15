@@ -44,20 +44,22 @@ public class MySQLOperatoerDAO implements OperatoerDAO {
 		
 	}
 	
-	public void createOperatoer(OperatoerDTO opr) throws DALException {		
-			Connector.doUpdate(
-				"INSERT INTO operatoer(opr_id, opr_navn, ini, cpr, password) VALUES " +
-				"(" + opr.getOprId() + ", '" + opr.getOprNavn() + "', '" + opr.getIni() + "', '" + 
-				opr.getCpr() + "', '" + opr.getPassword() + "')"
-			);
+	public void createOperatoer(OperatoerDTO opr) throws DALException {
+		Connector.doUpdate(
+				SQLMapper.getSQL("createOperatoer",opr.toArray()));
+		if(opr.getRoles().size()>1){
+			for(int i =1;i<opr.getRoles().size();i++)
+				Connector.doUpdate(SQLMapper.getSQL("addRole", String.valueOf(opr.getOprId()),String.valueOf(opr.getRoles().get(i).getRoleId())));
+		}
+		
 	}
 	
 	public void updateOperatoer(OperatoerDTO opr) throws DALException {
-		Connector.doUpdate(
-				"UPDATE operatoer SET  opr_navn = '" + opr.getOprNavn() + "', ini =  '" + opr.getIni() + 
-				"', cpr = '" + opr.getCpr() + "', password = '" + opr.getPassword() + "' WHERE opr_id = " +
-				opr.getOprId()
-		);
+		Connector.doUpdate(SQLMapper.getSQL("updateOperatoer",opr.toArray()));
+		if(opr.getRoles().size()>1){
+			for(int i =1;i<opr.getRoles().size();i++)
+				Connector.doUpdate(SQLMapper.getSQL("addRole", String.valueOf(opr.getOprId()),String.valueOf(opr.getRoles().get(i).getRoleId())));
+		}
 	}
 	
 	public List<OperatoerDTO> getOperatoerList() throws DALException {
@@ -66,7 +68,7 @@ public class MySQLOperatoerDAO implements OperatoerDAO {
 		String name, ini, cpr, password;
 		List<RoleDTO> roles = new ArrayList<RoleDTO>();
 
-		ResultSet rs = Connector.doQuery(SQLMapper.getStatement("allUsers"));
+		ResultSet rs = Connector.doQuery(SQLMapper.getStatement("allOperatoere"));
 		int tempID = 0;
 		try {
 			while (rs.next()) {
@@ -88,6 +90,9 @@ public class MySQLOperatoerDAO implements OperatoerDAO {
 		} 
 		catch (SQLException e) { throw new DALException(e); }
 		return list;
+	}
+	public void deleteOperatoer(int opr_id) throws DALException{
+		Connector.doUpdate(SQLMapper.getSQL("deleteOperatoer", String.valueOf(opr_id)));
 	}
 }
 	
