@@ -11,3 +11,6 @@ createOperatoer=call createOperatoer({0},''{1}'',''{2}'',''{3}'',''{4}'',''{5}''
 addRole=call addRole({0},{1})
 createProdBatchKomp = call createProdBatchKomp({0},{1},{2},{3},{4})
 updateProdBatchKomp = call updateProdBatchKomp({0},{1},{2},{3},{4})
+select.all.from = SELECT * FROM {0}
+getProduktBatchKompList = SELECT * FROM produktbatchKomp WHERE pb_id = {0}
+getProduktBatchKomp = SELECT * FROM produktbatchKomp WHERE pb_id = {0} and rb_id = {1}
