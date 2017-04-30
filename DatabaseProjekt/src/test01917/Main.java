@@ -34,9 +34,9 @@ public class Main {
 		}
 //		try {
 //			
-
-			
-// TEST1			
+//
+//			
+////// TEST1			
 //			MySQLProduktBatchDAO r = new MySQLProduktBatchDAO();
 //			ProduktBatchDTO dto= new ProduktBatchDTO(27, 5, 1);
 //			r.createProduktBatch(dto);
@@ -54,9 +54,9 @@ public class Main {
 //			dto1=t.getProduktBatchKomp(27, 1);
 //			System.out.println(dto1.getOprId());
 //			System.out.println(t.getProduktBatchKompList(27));
-			
-
-// TEST2			
+//			
+//
+////// TEST2			
 //			MySQLRaavareBatchDAO rb = new MySQLRaavareBatchDAO();
 //			RaavareBatchDTO dto2= new RaavareBatchDTO(27, 1, 1);
 //			rb.createRaavareBatch(dto2);
@@ -66,9 +66,9 @@ public class Main {
 //			System.out.println(dto2.getMaengde());
 //			System.out.println(rb.getRaavareBatchList());
 //			System.out.println(rb.getRaavareBatchList(1));
-			
-			
-// TEST3
+//			
+//			
+////// TEST3
 //			MySQLRaavareDAO rv=new MySQLRaavareDAO();
 //			RaavareDTO dto3 = new RaavareDTO(17,"smør","Egelykke");
 //			rv.createRaavare(dto3);
@@ -92,16 +92,16 @@ public class Main {
 //			System.out.println(rek.getReceptKomp(47, 17).getNomNetto());
 //			System.out.println(rek.getReceptKompList());
 //			System.out.println(rek.getReceptKompList(47));
-			
-// TEST4
+//			
+////// TEST4
 //			MySQLRoleDAO ro = new MySQLRoleDAO();
 //			RoleDTO dto6= new RoleDTO(27,"Baws");
 //			ro.createRole(dto6);
 //			ro.updateRole(dto6);
 //			System.out.println(ro.getRole(27).getRoleName());
 //			System.out.println(ro.getRoleList());
-
-
+//
+//
 //		} catch (DALException e) {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
