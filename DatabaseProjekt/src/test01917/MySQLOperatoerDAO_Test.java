@@ -1,9 +1,7 @@
 package test01917;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -14,7 +12,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import connector01917.Connector;
-import connector01917.SQLMapper;
 import daoimpl01917.MySQLOperatoerDAO;
 import daointerfaces01917.DALException;
 import dto01917.OperatoerDTO;
@@ -24,9 +21,12 @@ public class MySQLOperatoerDAO_Test {
 
 	private static MySQLOperatoerDAO oprDao = new MySQLOperatoerDAO();
 
-	private static OperatoerDTO opr1 = new OperatoerDTO(1, "opr1", "o1", "010411-1452", "1ugf7&2",new ArrayList<RoleDTO>());
-	private static OperatoerDTO opr2 = new OperatoerDTO(2, "opr2", "o2", "020411-1452", "2ugf7&2",new ArrayList<RoleDTO>());
-	private static OperatoerDTO opr3 = new OperatoerDTO(3, "opr3", "o3", "030411-1452", "3ugf7&2",new ArrayList<RoleDTO>());
+	private static OperatoerDTO opr1 = new OperatoerDTO(1, "opr1", "o1", "010411-1452", "1ugf7&2",
+			new ArrayList<RoleDTO>());
+	private static OperatoerDTO opr2 = new OperatoerDTO(2, "opr2", "o2", "020411-1452", "2ugf7&2",
+			new ArrayList<RoleDTO>());
+	private static OperatoerDTO opr3 = new OperatoerDTO(3, "opr3", "o3", "030411-1452", "3ugf7&2",
+			new ArrayList<RoleDTO>());
 	private static OperatoerDTO tempOpr;
 
 	@BeforeClass
@@ -42,10 +42,10 @@ public class MySQLOperatoerDAO_Test {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		opr1.addRole(new RoleDTO(2,null));
-		opr2.addRole(new RoleDTO(3,null));
-		opr3.addRole(new RoleDTO(4,null));
+
+		opr1.addRole(new RoleDTO(2, null));
+		opr2.addRole(new RoleDTO(3, null));
+		opr3.addRole(new RoleDTO(4, null));
 		try {
 			oprDao.createOperatoer(opr1);
 			oprDao.createOperatoer(opr2);
@@ -92,34 +92,46 @@ public class MySQLOperatoerDAO_Test {
 
 	@After
 	public void tearDown() throws Exception {
-		opr1 = new OperatoerDTO(1, "opr1", "o1", "010411-1452", "1ugf7&2",new ArrayList<RoleDTO>());
-		opr2 = new OperatoerDTO(2, "opr2", "o2", "020411-1452", "2ugf7&2",new ArrayList<RoleDTO>());
-		opr3 = new OperatoerDTO(3, "opr3", "o3", "030411-1452", "3ugf7&2",new ArrayList<RoleDTO>());
-		
-		opr1.addRole(new RoleDTO(1,null));
-		opr1.addRole(new RoleDTO(2,null));
-		opr2.addRole(new RoleDTO(3,null));
-		opr3.addRole(new RoleDTO(4,null));
-		
-		
+		opr1 = new OperatoerDTO(1, "opr1", "o1", "010411-1452", "1ugf7&2", new ArrayList<RoleDTO>());
+		opr2 = new OperatoerDTO(2, "opr2", "o2", "020411-1452", "2ugf7&2", new ArrayList<RoleDTO>());
+		opr3 = new OperatoerDTO(3, "opr3", "o3", "030411-1452", "3ugf7&2", new ArrayList<RoleDTO>());
+
+		opr1.addRole(new RoleDTO(1, null));
+		opr1.addRole(new RoleDTO(2, null));
+		opr2.addRole(new RoleDTO(3, null));
+		opr3.addRole(new RoleDTO(4, null));
+
 		oprDao.updateOperatoer(opr1);
 		oprDao.updateOperatoer(opr2);
 		oprDao.updateOperatoer(opr3);
 	}
-	
-	
+
 	@Test
-	public void test1(){
+	public void test1() {
 		try {
-			tempOpr=oprDao.getOperatoer(1);
-			tempOpr.setIni("asd");
+			tempOpr = oprDao.getOperatoer(1);
+
+			tempOpr.addRole(new RoleDTO(3, null));
 			oprDao.updateOperatoer(tempOpr);
-			assertEquals(tempOpr.getIni(),oprDao.getOperatoer(1).getIni());
+
+			assertEquals(tempOpr.getRoles().get(0).getRoleId(), oprDao.getOperatoer(1).getRoles().get(0).getRoleId());
+			assertEquals(tempOpr.getRoles().get(1).getRoleId(), oprDao.getOperatoer(1).getRoles().get(1).getRoleId());
+
+		} catch (DALException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Test
+	public void test2() {
+		try {
+			tempOpr = oprDao.getOperatoer(1);
+			tempOpr.setIni("ekv543");
+			oprDao.updateOperatoer(tempOpr);
+			assertEquals(tempOpr.getIni(), oprDao.getOperatoer(1).getIni());
 		} catch (DALException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
-
 }
