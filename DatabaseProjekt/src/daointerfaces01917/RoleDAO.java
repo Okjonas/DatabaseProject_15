@@ -6,7 +6,7 @@ import java.util.List;
 import dto01917.RoleDTO;
 import daointerfaces01917.DALException;
 
-public interface IRoleDAO {
+public interface RoleDAO {
 	
 	RoleDTO getRole(int roleId) throws DALException;
 	List<RoleDTO> getRoleList() throws DALException;

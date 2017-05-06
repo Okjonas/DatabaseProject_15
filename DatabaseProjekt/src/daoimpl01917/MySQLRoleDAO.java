@@ -9,9 +9,9 @@ import connector01917.Connector;
 import connector01917.SQLMapper;
 import dto01917.RoleDTO;
 import daointerfaces01917.DALException;
-import daointerfaces01917.IRoleDAO;
+import daointerfaces01917.RoleDAO;
 
-public class MySQLRoleDAO implements IRoleDAO {
+public class MySQLRoleDAO implements RoleDAO {
 
 	@Override
 	public RoleDTO getRole(int roleId) throws DALException {
